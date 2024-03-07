@@ -1,5 +1,33 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+
 .header{
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+
+  background-color: #132528;
+  color: white;
+  height: 60px;
+  padding: 0 10vw 0 10vw;
+}
+
+.header-menu{
+  display: flex;
+  gap: 10px;
+}
+
+.logo, .menu-element{
+  text-decoration: none;
+  color: white;
+}
+
+.logo{
+  font-size: 30px;
+}
+
+.menu-element{
+  font-size: 14px;
 }
