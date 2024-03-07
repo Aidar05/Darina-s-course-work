@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* Избавился от дефолтных стилей браузера */
 body{
+  background-color: rgba(24,49,53,255);
+  color: white;
   padding: 0;
   margin: 0;
+  font-family: "Inter", sans-serif;
 }
 
+/* Стили хэдера и все что в нем */
 .header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  
   background-color: #132528;
   color: white;
   height: 60px;
@@ -21,7 +28,7 @@ body{
 
 .logo, .menu-element{
   text-decoration: none;
-  color: white;
+  color: inherit
 }
 
 .logo{
@@ -30,4 +37,34 @@ body{
 
 .menu-element{
   font-size: 14px;
+}
+
+/* Стили контента главной страницы. Цитата  */
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+#quote{
+  width: auto;
+  font-size: 60px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+#highlight-work{
+  color: #9E4528;
+}
+
+#quote-author{
+  width: 100%;
+  display: inline-block;
+  font-size: 40px;
+  text-align: right;
+  font-weight: 100;
 }
