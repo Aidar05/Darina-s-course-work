@@ -3,8 +3,8 @@
     <router-link to="/" class="logo">LOGO</router-link>
     
     <div class="header-menu">
-      <router-link v-for="(element, index) in menuElements" :index="key"  
-        to="element.link" class="menu-element">
+      <router-link v-for="(element, index) in menuElements" :key="index"  
+        :to="'/#' + element.link" class="menu-element">
         {{ element.text }}
       </router-link>
     </div>

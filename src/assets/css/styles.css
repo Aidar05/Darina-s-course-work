@@ -39,6 +39,10 @@ body{
   font-size: 14px;
 }
 
+.menu-element:hover{
+  color: #9E4528
+}
+
 /* Стили контента главной страницы. Цитата  */
 .main-container{
   display: flex;
