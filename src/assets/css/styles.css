@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+:root{
+  --text-color: white;
+  --bg-color: rgba(24,49,53,255);
+  --call-toAction-color: #9E4528;
+}
+
 /* Избавился от дефолтных стилей браузера */
 body{
-  background-color: rgba(24,49,53,255);
-  color: white;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -16,7 +22,7 @@ body{
   align-items: center;
   
   background-color: #132528;
-  color: white;
+  color: var(--text-color);
   height: 60px;
   padding: 0 10vw 0 10vw;
 }
@@ -40,14 +46,16 @@ body{
 }
 
 .menu-element:hover{
-  color: #9E4528
+  color: var(--call-toAction-color)
 }
 
 /* Стили контента главной страницы. Цитата  */
 .main-container{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 100px;
   width: 100vw;
 }
 
@@ -62,7 +70,7 @@ body{
 }
 
 #highlight-work{
-  color: #9E4528;
+  color: var(--call-toAction-color);
 }
 
 #quote-author{
@@ -71,4 +79,38 @@ body{
   font-size: 40px;
   text-align: right;
   font-weight: 100;
+}
+
+#Van-Gock-container{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+#Van-Gock-img{
+  height: 450px
+}
+
+#about-text-container{
+  width: 50vw;
+}
+
+#about-header{
+  font-size: 32px;
+  width: fit-content;
+  color: var(--call-toAction-color);
+}
+
+#about-text{
+  font-size: 22px;
+  width: 70%;
+}
+
+.call-to-action{
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
+  background-color: #D9B77F;
+  color: var(--call-toAction-color);
+  border: solid 2px var(--call-toAction-color)
 }

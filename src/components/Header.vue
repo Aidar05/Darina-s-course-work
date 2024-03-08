@@ -17,7 +17,7 @@ export default{
   data(){
     return{
       menuElements: [
-        {text: "Ван Гок", link: "Van-Gock"},
+        {text: "Ван Гок", link: "Van-Gock-container"},
         {text: "история работ", link: "works"},
         {text: "галерея", link: "/gallery"},
         {text: "критики", link: "critics"}
