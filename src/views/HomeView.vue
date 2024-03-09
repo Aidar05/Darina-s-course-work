@@ -19,16 +19,21 @@
         <button class="call-to-action">{{ buttonText }}</button>
       </div>
     </div>
+
+    <Works v-for="(item, index) in worksContent" :key="index"
+     :workHeader="item.header" :workText="item.text" :imgSrc="item.img" bgColor="item.bgColor">
+    </Works>
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue"
+import Works from "@/components/Works.vue"
 
 export default {
   name: 'HomeView',
   components: {
-    Header
+    Header, Works
   },
   data(){
     return{
@@ -41,7 +46,18 @@ export default {
         оказали значительное влияние на живопись XX века. За десять с небольшим лет создал более \
         2 100 произведений, включая около 870 картин маслом. При жизни был практически обойдён \
         вниманием критиков.",
-      buttonText: "в галерею"
+      buttonText: "в галерею",
+      worksContent: [
+        { header: "Валуны и дуб",
+          text: "Картина «Валуны и дуб» была написана летом 1888 года, когда \
+            Винсент ван Гог жил в городке Арль, находящемся на юге Франции. Арльский период считается \
+            наиболее плодотворным периодом творческой биографии художника. Пейзаж, изображённый на \
+            картине, находился в гористой местности Монмажур  расположенной в нескольких  километрах \
+            к северу от Арля. К тому же периоду относится серия набросков видов Монмажура, хранящаяся \
+            в Музее Винсента ван Гога в Амстердаме.",
+          img: "../assets/imgs/boulders.png", bgColor: "orange" 
+        }
+      ]
     }
   }
 }

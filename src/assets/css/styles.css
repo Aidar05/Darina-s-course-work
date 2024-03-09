@@ -96,7 +96,6 @@ body{
 }
 
 #about-header{
-  font-size: 32px;
   width: fit-content;
   color: var(--call-toAction-color);
 }
@@ -104,6 +103,7 @@ body{
 #about-text{
   font-size: 22px;
   width: 70%;
+  font-size: 32px;
 }
 
 .call-to-action{
@@ -113,4 +113,8 @@ body{
   background-color: #D9B77F;
   color: var(--call-toAction-color);
   border: solid 2px var(--call-toAction-color)
+}
+
+#works{
+  width: 80vw
 }
