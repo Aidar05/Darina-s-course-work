@@ -7,7 +7,9 @@
 
       <span id="quote-author">{{ quoteAuthor }}</span>
     </article>
+  </div>
 
+  <div class="main-container">
     <div id="Van-Gock-container">
       <img src="../assets/imgs/VanGock.png" alt="Resource not found" id="Van-Gock-img">
 
@@ -19,7 +21,9 @@
         <button class="call-to-action">{{ buttonText }}</button>
       </div>
     </div>
+  </div>
 
+  <div class="main-container">
     <Works v-for="(item, index) in worksContent" :key="index" :workHeader="item.header" :workText="item.text"
      :imgSrc="item.img" :bgColor="item.bgColor" :imgInfo="item.imgInfo" :museum="item.museum">
     </Works>
