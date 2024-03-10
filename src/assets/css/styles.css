@@ -13,6 +13,7 @@ body{
   padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
 
 /* Стили хэдера и все что в нем */
@@ -116,5 +117,65 @@ body{
 }
 
 #works{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 80vw
+}
+
+.work-element{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px 0 40px;
+  width: 100%;
+  background-color: var(--call-toAction-color);
+}
+
+.work-img-container{
+  position: relative;
+  bottom: 50px;
+}
+
+.work-img{
+  width: 350px;
+  height: 460px;
+  margin-bottom: 5px;
+}
+
+.work-header{
+  text-align: center;
+}
+
+.work-text{
+  width: 750px;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.credit-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px
+}
+
+.img-info{
+  font-size: 15px;
+}
+
+.museum{
+  margin-bottom: 3px;
+}
+
+.line{
+  background-color: white;
+  height: 1px;
+}
+
+.first-line{
+  width: 250px;
+}
+
+.second-line{
+  width: 200px;
 }

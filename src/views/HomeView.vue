@@ -20,8 +20,8 @@
       </div>
     </div>
 
-    <Works v-for="(item, index) in worksContent" :key="index"
-     :workHeader="item.header" :workText="item.text" :imgSrc="item.img" bgColor="item.bgColor">
+    <Works v-for="(item, index) in worksContent" :key="index" :workHeader="item.header" :workText="item.text"
+     :imgSrc="item.img" :bgColor="item.bgColor" :imgInfo="item.imgInfo" :museum="item.museum">
     </Works>
   </div>
 </template>
@@ -48,17 +48,20 @@ export default {
         вниманием критиков.",
       buttonText: "в галерею",
       worksContent: [
-        { header: "Валуны и дуб",
+        { header: "Валуны и дуб", bgColor: "orange",
           text: "Картина «Валуны и дуб» была написана летом 1888 года, когда \
             Винсент ван Гог жил в городке Арль, находящемся на юге Франции. Арльский период считается \
             наиболее плодотворным периодом творческой биографии художника. Пейзаж, изображённый на \
             картине, находился в гористой местности Монмажур  расположенной в нескольких  километрах \
             к северу от Арля. К тому же периоду относится серия набросков видов Монмажура, хранящаяся \
             в Музее Винсента ван Гога в Амстердаме.",
-          img: "../assets/imgs/boulders.png", bgColor: "orange" 
+          img: require("../assets/imgs/boulders.png"), imgInfo: "Холст, масло. 54,9 x 65,7 см",
+          museum: "Музей изящных искусств, Хьюстон"
+
         }
       ]
     }
   }
 }
+
 </script>

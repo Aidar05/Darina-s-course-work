@@ -9,6 +9,14 @@
       
       <div class="work-img-container">
         <img :src="imgSrc" alt="Resource not found" class="work-img">
+
+        <div class="credit-container">
+          <span class="img-info">{{ imgInfo }}</span>
+          <span class="img-info museum">{{ museum }}</span>
+          <div class="line first-line"></div>
+          <div class="line second-line"></div>
+        </div>
+        
       </div>
     </div>
   </div>
@@ -20,7 +28,10 @@ export default{
   props: {
     workHeader: String,
     workText: String,
-    imgSrc: String
+    imgSrc: String,
+    bgColor: String,
+    imgInfo: String,
+    museum: String  
   }
 }
 </script>
