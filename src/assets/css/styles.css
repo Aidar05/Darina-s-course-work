@@ -142,17 +142,18 @@ body{
 
 .work-img-container{
   position: relative;
-  bottom: 70px;
+  bottom: 60px;
 }
 
 .work-img{
-  width: 400px;
+  width: 380px;
   aspect-ratio: 76 / 100;
   padding-bottom: 15px;
 }
 
 .work-text-container{
   height: auto;
+  min-height: 0;
 }
 
 .work-header{
