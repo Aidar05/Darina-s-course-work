@@ -28,14 +28,14 @@ def check_user(db, login, password):
 def get_user_id(db, username):
   cursor = db.cursor()
   cursor.execute("SELECT id FROM user_data WHERE username = %s", (username, ))
-  user = cursor.fetchone()
+  user = cursor.fetchall()
   return user[0] if user else None
   
 def get_user_data(db, user_id):
   cursor = db.cursor()
   cursor.execute("select * from user_data where id = %s", (user_id, ))
-  user_data = cursor.fetchone()
-  return user_data
+  user_data = cursor.fetchall()
+  return user_data[0] if user_data else None
 
 def delete_user_data(db):
   cursor = db.cursor()

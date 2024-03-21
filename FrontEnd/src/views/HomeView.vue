@@ -81,17 +81,6 @@ export default {
         }
       ]
     }
-  },
-  methods: {
-    sendData() {
-      axios.post('/sign-up', { key: 'value' })
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
   }
 }
 
