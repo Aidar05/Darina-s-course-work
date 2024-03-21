@@ -14,11 +14,6 @@ db = mysql.connector.connect(
   database="gallery_data"
 )
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    return response
-
 @app.route('/', methods=["POST", "GET"])
 def main_page():
     return "Goodbye, World!"
@@ -26,7 +21,6 @@ def main_page():
 
 @app.route('/sign-up', methods=['POST', 'GET'])
 def sign_up():
-    print("request received")
     if request.method == "POST":
         username = request.form["username"]
         email = request.form["email"]
@@ -50,6 +44,12 @@ def sign_up():
 @app.route('/static/<path:filename>')
 def staticfiles(filename):
     return send_from_directory(app.static_folder, filename)
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='localhost', port=5000)
