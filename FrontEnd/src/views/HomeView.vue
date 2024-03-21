@@ -1,4 +1,4 @@
-j<template>
+<template>
   <Header></Header>
     
   <div class="main-container">
@@ -80,6 +80,17 @@ export default {
           img: require("../assets/imgs/doctorPortrait.png"), imgInfo: "Холст, масло. 63 x 53 см"
         }
       ]
+    }
+  },
+  methods: {
+    sendData() {
+      axios.post('/sign-up', { key: 'value' })
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
     }
   }
 }

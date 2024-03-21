@@ -16,8 +16,10 @@ db = mysql.connector.connect(
 def main_page():
     return send_from_directory(app.static_folder, 'index.html')
 
-@app.route('sign-up', methods=['POST', 'GET'])
+@app.route('/sign-up', methods=['POST', 'GET'])
 def sign_up():
+    print("request received")
+
     if request.method == "GET":
         return redirect("sign-up.html")
     
