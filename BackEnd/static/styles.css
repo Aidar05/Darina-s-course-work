@@ -8,6 +8,7 @@
 
 /* Избавился от дефолтных стилей браузера */
 body{
+  width: 100vw;
   background-color: var(--bg-color);
   color: var(--text-color);
   padding: 0;
@@ -121,14 +122,13 @@ body{
   flex-direction: column;
   align-items: center;
   gap: 150px;
-  width: 80vw
 }
 
 .work-element{
   display: flex;
   justify-content: space-between;
   padding: 0 40px 0 40px;
-  width: 100%;
+  width: 70vw;
   background-color: var(--call-toAction-color);
 }
 

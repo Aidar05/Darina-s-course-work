@@ -1,10 +1,8 @@
-from flask import Flask, send_from_directory, request, redirect, session, url_for
-from flask_cors import CORS
-import mysql.connector
+from flask import Flask, render_template, request, session, redirect, url_for
 from db_logic import *
+import mysql.connector
 
-app = Flask(__name__, static_folder='../FrontEnd/dist')
-CORS(app)
+app = Flask(__name__)
 app.secret_key = 'eaa2cc52a16507cf194e4f0c'
 
 db = mysql.connector.connect(
@@ -14,42 +12,72 @@ db = mysql.connector.connect(
   database="gallery_data"
 )
 
-@app.route('/', methods=["POST", "GET"])
+@app.route('/')
 def main_page():
-    return "Goodbye, World!"
-    # return send_from_directory(app.static_folder, 'index.html')
+  return render_template('index.html')
+
+# @app.route('/profile', methods=["POST", "GET"])
+# def get_profile_info(): 
+#   password = hide_password(session['password']) 
+#   print(session['history'])
+#   return render_template(
+#     'profile.html',
+#     username = session['username'],
+#     email = session['email'],
+#     password = password,
+#     history = session['history']
+#   )
 
 @app.route('/sign-up', methods=['POST', 'GET'])
-def sign_up():
-    if request.method == "POST":
-        username = request.form["username"]
-        email = request.form["email"]
-        password = request.form['password']
-        add_user(db, username, email, password)
+def registration():
+  if request.method == "GET":
+    return render_template("sign-up.html")
+  
+  elif request.method == "POST":
+    username = request.form["username"]
+    email = request.form["email"]
+    password = request.form['password']
+    add_user(db, username, email, password)
 
-        # add_userData_toSession(username)
+    add_userData_toSession(username)
 
     return redirect(url_for("main_page"))
 
-# def add_userData_toSession(login):
-#   session['user_id'] = get_user_id(db, login)
-#   user_data = get_user_data(db, session['user_id'])
+@app.route('/sign-in', methods=['POST', 'GET'])
+def login():
+  if request.method == "GET":
+    return render_template("sign-in.html")
+  
+  elif request.method == "POST":
+    username = request.form["login"]  
+    password = request.form['password']   
+    
+    if check_user(db, username, password)[0]:
+      add_userData_toSession(username)
+      return redirect(url_for("main_page"))
+    else: 
+      return render_template("sign-in.html")
 
-#   session['logged_in'] = True
-#   session['username'] = user_data[1]
-#   session['email'] = user_data[2]
-#   session['password'] = user_data[3]
+@app.route('/log-out')
+def logout():
+  session.clear()
+  return redirect(url_for('main_page'))
 
+def add_userData_toSession(login):
+  session['user_id'] = get_user_id(db, login)
+  user_data = get_user_data(db, session['user_id'])
 
-@app.route('/static/<path:filename>')
-def staticfiles(filename):
-    return send_from_directory(app.static_folder, filename)
+  session['logged_in'] = True
+  session['username'] = user_data[1]
+  session['email'] = user_data[2]
+  session['password'] = user_data[3]
+  session['history'] = user_data[4]
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    return response
+def hide_password(password):
+  result = ""
+  for i in range(len(password)):
+    result += "*"
+  return result
 
-
-if __name__ == "__main__":
-    app.run(debug=True, host='localhost', port=5000)
+if __name__ == '__main__':
+  app.run(host='0.0.0.0', port='43345', debug=True)
