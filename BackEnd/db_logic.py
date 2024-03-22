@@ -1,3 +1,14 @@
+def create_table(db):
+    cursor = db.cursor()
+    query = '''create table if not exists user_data(
+        id int auto_increment primary key,
+        username varchar(255),
+        email varchar(255),
+        password varchar(255)
+    )'''
+    cursor.execute(query)  
+    db.commit()
+
 def add_user(db, username, email, password):
   cursor = db.cursor()
   add_data_query = "INSERT INTO user_data (username, email, password) VALUES (%s, %s, %s)"
@@ -25,17 +36,22 @@ def check_user(db, login, password):
     "Successfully signed in"
   ]
 
-def get_user_id(db, username):
+def save_to_history(db, url, user_id):
   cursor = db.cursor()
-  cursor.execute("SELECT id FROM user_data WHERE username = %s", (username, ))
-  user = cursor.fetchall()
+  cursor.execute("UPDATE user_data SET history = CONCAT(history, ', ', %s) WHERE id = %s", (url, user_id))  
+  db.commit()
+
+def get_userColumn_byUsername(db, username, column):
+  cursor = db.cursor()
+  cursor.execute(f"SELECT {column} FROM user_data WHERE username = %s", (username, ))
+  user = cursor.fetchone()
   return user[0] if user else None
   
 def get_user_data(db, user_id):
   cursor = db.cursor()
   cursor.execute("select * from user_data where id = %s", (user_id, ))
-  user_data = cursor.fetchall()
-  return user_data[0] if user_data else None
+  user_data = cursor.fetchone()
+  return user_data
 
 def delete_user_data(db):
   cursor = db.cursor()
