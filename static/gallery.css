@@ -1,6 +1,6 @@
 @import url('./styles.css');
 
-.gallery-container{
+.gallery-main-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +10,17 @@
 
 .gallery-section{
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 50px
+}
+
+.gallery-section img{
+  width: 100%
+}
+
+.item{
+  width: 25vw
 }
 
 .gallery-header{
