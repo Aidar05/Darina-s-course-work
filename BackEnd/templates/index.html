@@ -48,7 +48,10 @@
 
     <div class="main-container">
       <div id="Van-Gock-container">
-        <img src="../static/VanGock.png" alt="Resource not found" id="Van-Gock-img">
+        <img
+          src="{{url_for('static', filename='main_imgs/VanGock.png')}}"
+          alt="Resource not found"
+          id="Van-Gock-img">
 
         <div id="about-text-container">
           <h1 id="about-header">Кратко про Винсента Ван Гока</h1>
@@ -76,7 +79,10 @@
         </article>
         
         <div class="work-img-container">
-          <img src="../static/boulders.png" alt="Resource not found" class="work-img">
+          <img 
+            src="{{url_for('static', filename='main_imgs/boulders.png')}}"
+            alt="Resource not found"
+            class="work-img">
     
           <div class="credit-container">
             <span class="img-info">Холст, масло. 54,9 x 65,7 см</span>
@@ -98,7 +104,7 @@
         </article>
         
         <div class="work-img-container">
-          <img src="../static/sunflowers.png" alt="Resource not found" class="work-img">
+          <img src="{{url_for('static', filename='main_imgs/sunflowers.png')}}" alt="Resource not found" class="work-img">
     
           <div class="credit-container">
             <span class="img-info">91 x 72 см,</span>
@@ -122,7 +128,10 @@
         </article>
         
         <div class="work-img-container">
-          <img src="../static/doctorPortrait.png" alt="Resource not found" class="work-img">
+          <img
+            src="{{url_for('static', filename='main_imgs/doctorPortrait.png')}}"
+            alt="Resource not found"
+            class="work-img">
     
           <div class="credit-container">
             <span class="img-info">Холст, масло. 54,9 x 65,7 см</span>

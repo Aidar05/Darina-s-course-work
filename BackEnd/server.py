@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from db_logic import *
+import os
 import mysql.connector
 
 app = Flask(__name__)
@@ -16,6 +17,14 @@ db = mysql.connector.connect(
 def main_page():
     print(session)
     return render_template('index.html')
+
+@app.route('/gallery', methods=["GET"])
+def gallery():
+    img_urls = os.listdir(os.path.join(app.static_folder, "gallery"))
+    return render_template(
+        'gallery.html',
+        img_urls=img_urls
+    )
 
 @app.route('/profile', methods=["POST", "GET"])
 def get_profile_info():     
