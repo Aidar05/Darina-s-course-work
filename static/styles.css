@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root{
+  --text-color: white;
+  --bg-color: rgba(24,49,53,255);
+  --call-toAction-color: #9E4528;
+}
+
+/* Избавился от дефолтных стилей браузера */
+body{
+  width: 100vw;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Стили хэдера и все что в нем */
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  background-color: #132528;
+  color: var(--text-color);
+  height: 60px;
+  padding: 0 10vw 0 10vw;
+}
+
+.header-menu{
+  display: flex;
+  gap: 10px;
+}
+
+.logo, .menu-element{
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  color: inherit
+}
+
+.logo{
+  font-size: 30px;
+}
+
+.menu-element{
+  font-size: 14px;
+}
+
+.menu-element:hover{
+  color: var(--call-toAction-color)
+}
+
+/* Стили контента главной страницы. Цитата  */
+.main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin: 150px 0 150px 0;
+}
+
+#quote{
+  width: auto;
+  font-size: 60px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+#highlight-work{
+  color: var(--call-toAction-color);
+}
+
+#quote-author{
+  width: 100%;
+  display: inline-block;
+  font-size: 40px;
+  text-align: right;
+  font-weight: 100;
+}
+
+#Van-Gock-container{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+#Van-Gock-img{
+  height: 450px
+}
+
+#about-text-container{
+  width: 50vw;
+}
+
+#about-header{
+  width: fit-content;
+  color: var(--call-toAction-color);
+}
+
+#about-text{
+  font-size: 22px;
+  width: 70%;
+  font-size: 32px;
+}
+
+.call-to-action{
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
+  background-color: #D9B77F;
+  color: var(--call-toAction-color);
+  border: solid 2px var(--call-toAction-color)
+}
+
+#works{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 150px;
+}
+
+.work-element{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px 0 40px;
+  width: 70vw;
+  background-color: var(--call-toAction-color);
+}
+
+.cyan{
+  background-color: #5F8C7F;
+}
+
+.darkGreen{
+  background-color: #194A2D;
+}
+
+.work-img-container{
+  position: relative;
+  bottom: 60px;
+}
+
+.work-img{
+  width: 380px;
+  aspect-ratio: 76 / 100;
+  padding-bottom: 15px;
+}
+
+.work-text-container{
+  height: auto;
+  min-height: 0;
+}
+
+.work-header{
+  text-align: center;
+}
+
+.work-text{
+  width: 750px;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.credit-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px
+}
+
+.img-info{
+  font-size: 15px;
+}
+
+.museum{
+  margin-bottom: 3px;
+}
+
+.line{
+  background-color: white;
+  height: 1px;
+}
+
+.first-line{
+  width: 250px;
+}
+
+.second-line{
+  width: 200px;
+}

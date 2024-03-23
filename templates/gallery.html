@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Природа</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='gallery.css')}}">
+  </head>
+
+<body>
+  <div class="header">
+    <router-link to="/" class="logo">LOGO</router-link>
+    <div class="header-menu">
+        <a href="" class="menu-element">Ван Гок</a>
+        <a href="" class="menu-element">История Работ</a>
+        <a href="" class="menu-element">Критики</a>
+        <a href="{{url_for('gallery')}}" class="menu-element">Галерея</a>
+    </div>
+    
+    {% if 'username' in session %}
+      <div class="btns-container">        
+        <button onclick="location.href='/profile'" class="menu-element">Профиль</button>
+      </div>
+    {% else %}
+      <div class="reg-container">
+        <button onclick="location.href='/sign-up'" class="menu-element">Регистрация</button>
+        <button onclick="location.href='/sign-in'" class="menu-element">Войти</button>
+      </div>
+    {% endif %}
+  </div>      
+
+  <div class="gallery-container"> 
+    <h2 class="title">Галерея Ван Гока</h2>
+    <a href="{{url_for('main_page')}}">← Назад</a>
+    
+    <div class="img-list">
+      {% for img_url in img_urls %}
+        <a 
+          href="{{url_for('static', filename='gallery/'+img_url)}}" 
+          class="gallery-item">
+
+          <div class="gallery-item-hover">Посмотреть</div>
+          <img src="{{url_for('static', filename='gallery/'+img_url)}}"
+            alt="Resource not found">
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+    <script>
+        $(".gallery-list").magnificPopup({
+            delegate: "a",
+            type: "image",
+            gallery: {
+                enabled: true
+            }
+        });
+    </script>
+</body>
+
+</html>
