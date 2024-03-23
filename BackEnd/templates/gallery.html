@@ -8,12 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
     <link rel="stylesheet" href="style.css">
-</head>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='gallery.css')}}">
+  </head>
 
 <body>
-  <div class="gallery-container">
-    <h2 class="title">Gallery of Nature</h2>
-    <a href="index.html" onclick="self.close()">← Вернуться на главную</a>
+  <div class="gallery-container"> 
+    <h2 class="title">Галерея Ван Гока</h2>
+    <a href="{{url_for('main_page')}}">← Вернуться на главную</a>
     
     <div class="img-list">
       {% for img_url in img_urls %}

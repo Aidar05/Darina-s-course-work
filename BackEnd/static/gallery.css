@@ -1,3 +1,5 @@
+@import url('./styles.css');
+
 *{
   margin: 0;
   padding: 0;
@@ -7,12 +9,14 @@
 body{
   position: relative;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(90deg, #020024 0%, #1984d4 73%, #00d4ff 100%);
+  background-color: var(--bg-color);
 }
 
 .gallery-container{
+  width: 70vw;
   position: relative;
   padding: 45px 0;
+  margin: auto
 }
 
 h2.title{
