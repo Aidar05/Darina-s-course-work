@@ -20,13 +20,13 @@ def main_page():
 
 @app.route('/gallery', methods=["GET"])
 def gallery():
-    # self_portrait_urls = os.listdir(os.path.join(app.static_folder, "gallery/self_portraits"))
     portrait_url = 'gallery/self_portraits/self_portrait'
+    sunflower_url = 'gallery/block2/sunflowers'
     self_portraits = [
         {
         'img_info': 'Self-Portrait in front of the Easel',
         'dimens': '1888 (200 Kb); 65 x 50.5 cm',
-        'url': url_for('static', filename='gallery/self_portraits/self_portrait.png')
+        'url': url_for('static', filename=f'{portrait_url}.png')
         },
         {
         'img_info': 'Self-Portrait in front of the Easel',
@@ -49,9 +49,32 @@ def gallery():
         'url': url_for('static', filename=f'{portrait_url}5.png')
         }
     ]
+    sunflowers = [
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{sunflower_url}1.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{sunflower_url}2.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{sunflower_url}3.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{sunflower_url}4.png')
+        },
+    ]
     return render_template(
         'gallery.html',
-        self_portraits=self_portraits
+        self_portraits=self_portraits,
+        sunflowers=sunflowers
     )
 
 @app.route('/profile', methods=["POST", "GET"])

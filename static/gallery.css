@@ -15,6 +15,22 @@
   gap: 50px
 }
 
+.block1{
+  background-color: #1F3B3F;
+}
+
+.block2{
+  gap: 150px
+}
+
+.block2 .credit-container{
+  padding-top: 10px;
+}
+
+.block2 > .item{
+  flex: 0 0 35%
+}
+
 .gallery-section img{
   width: 100%
 }
@@ -37,4 +53,10 @@
   border: solid 3px white;
   background: transparent;
   padding: 7px 15px 
+}
+
+.bg-color{
+  width: 100vw;
+  height: 40vh;
+  background-color: black;
 }

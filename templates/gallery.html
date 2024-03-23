@@ -64,7 +64,7 @@
         </div>
       </div>
 
-      <div class="gallery-section">
+      <div class="gallery-section block1">
         {% for item in self_portraits %}
         <div class="work-img-container item">
           <img 
@@ -77,6 +77,22 @@
             <span class="img-info museum">{{item.dimens}}</span>
             <div class="line first-line"></div>
             <div class="line second-line"></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="gallery-section block2">
+        {% for item in sunflowers %}
+        <div class="work-img-container item">
+          <img 
+            src="{{item.url}}"
+            alt="Resource not found"
+            class="block2-img">
+    
+          <div class="credit-container">
+            <span class="img-info">{{item.img_info}}</span>
+            <span class="img-info museum">{{item.dimens}}</span>
           </div>
         </div>
         {% endfor %}
