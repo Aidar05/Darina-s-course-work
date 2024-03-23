@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Природа</title>
+    <title>Галерея</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
     <link rel="stylesheet" href="style.css">
@@ -12,48 +12,91 @@
     <link rel="stylesheet" href="{{url_for('static', filename='gallery.css')}}">
   </head>
 
-<body>
-  <div class="header">
-    <router-link to="/" class="logo">LOGO</router-link>
-    <div class="header-menu">
-        <a href="" class="menu-element">Ван Гок</a>
-        <a href="" class="menu-element">История Работ</a>
-        <a href="" class="menu-element">Критики</a>
-        <a href="{{url_for('gallery')}}" class="menu-element">Галерея</a>
-    </div>
-    
-    {% if 'username' in session %}
-      <div class="btns-container">        
-        <button onclick="location.href='/profile'" class="menu-element">Профиль</button>
+  <body>
+    <div class="header">
+      <a href="{{url_for('main_page')}}">LOGO</a>
+      <div class="header-menu">
+          <a href="" class="menu-element">Ван Гок</a>
+          <a href="" class="menu-element">История Работ</a>
+          <a href="" class="menu-element">Критики</a>
+          <a href="{{url_for('gallery')}}" class="menu-element">Галерея</a>
       </div>
-    {% else %}
-      <div class="reg-container">
-        <button onclick="location.href='/sign-up'" class="menu-element">Регистрация</button>
-        <button onclick="location.href='/sign-in'" class="menu-element">Войти</button>
-      </div>
-    {% endif %}
-  </div>      
+      
+      {% if 'username' in session %}
+        <div class="btns-container">        
+          <button onclick="location.href='/profile'" class="menu-element">Профиль</button>
+        </div>
+      {% else %}
+        <div class="reg-container">
+          <button onclick="location.href='/sign-up'" class="menu-element">Регистрация</button>
+          <button onclick="location.href='/sign-in'" class="menu-element">Войти</button>
+        </div>
+      {% endif %}
+    </div>      
 
-  <div class="gallery-container"> 
-    <h2 class="title">Галерея Ван Гока</h2>
-    <a href="{{url_for('main_page')}}">← Назад</a>
+    <div class="gallery-container"> 
+      <h2 class="gallery-header">Автопортреты</h2>
+      
+      <div class="gallery-section gallery-header-container">
+        <div class="work-img-container">
+          <img 
+            src="{{url_for('static', filename='gallery/header_img.png')}}"
+            alt="Resource not found"
+            class="work-img">
     
-    <div class="img-list">
-      {% for img_url in img_urls %}
-        <a 
-          href="{{url_for('static', filename='gallery/'+img_url)}}" 
-          class="gallery-item">
+          <div class="credit-container">
+            <span class="img-info">Self-Portrait 1887</span>
+            <span class="img-info">Oil on artist's board, mounted on cradled panel</span>
+            <span class="img-info museum">41 × 32.5 cm (16 1/8 × 12 13/16 in.)</span>
+            <div class="line first-line"></div>
+            <div class="line second-line"></div>
+          </div>
+        </div>
 
-          <div class="gallery-item-hover">Посмотреть</div>
-          <img src="{{url_for('static', filename='gallery/'+img_url)}}"
-            alt="Resource not found">
-        </a>
-      {% endfor %}
+        <div class="work-text-container">
+          <p class="work-text">
+            За свою творческую жизнь Ван Гог написал множество автопортретов. Для него это было одной
+            из форм самопознания и самовыражения. Он изображал себя в различные периоды жизни, всегда
+            ясно передавая свое эмоциональное состояние и душевные переживания.
+          </p>
+
+          <button class="work-text-button">К работам</button>
+        </div>
+      </div>
+
+      <div class="gallery-section">
+        {% for item in self_portraits %}
+        <div class="work-img-container">
+          <img 
+            src="{{item.url}}"
+            alt="Resource not found"
+            class="work-img">
+    
+          <div class="credit-container">
+            <span class="img-info">{{item.img_info}}</span>
+            <span class="img-info museum">{{item.dimens}}</span>
+            <div class="line first-line"></div>
+            <div class="line second-line"></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- <div class="img-list">
+        {% for img_url in img_urls %}
+          <a 
+            href="{{url_for('static', filename='gallery/'+img_url)}}" 
+            class="gallery-item">
+
+            <div class="gallery-item-hover">Посмотреть</div>
+            <img src="{{url_for('static', filename='gallery/'+img_url)}}"
+              alt="Resource not found">
+          </a>
+        {% endfor %} -->
+      </div>
     </div>
-  </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous">
     </script>
@@ -66,7 +109,7 @@
                 enabled: true
             }
         });
-    </script>
-</body>
+    </script> -->
+  </body>
 
 </html>

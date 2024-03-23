@@ -20,10 +20,38 @@ def main_page():
 
 @app.route('/gallery', methods=["GET"])
 def gallery():
-    img_urls = os.listdir(os.path.join(app.static_folder, "gallery"))
+    # self_portrait_urls = os.listdir(os.path.join(app.static_folder, "gallery/self_portraits"))
+    portrait_url = 'gallery/self_portraits/self_portrait'
+    self_portraits = [
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename='gallery/self_portraits/self_portrait.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{portrait_url}2.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{portrait_url}3.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{portrait_url}4.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{portrait_url}5.png')
+        }
+    ]
     return render_template(
         'gallery.html',
-        img_urls=img_urls
+        self_portraits=self_portraits
     )
 
 @app.route('/profile', methods=["POST", "GET"])
