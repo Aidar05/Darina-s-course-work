@@ -56,7 +56,7 @@ def gallery():
         'url': url_for('static', filename=f'{sunflower_url}1.png')
         },
         {
-        'img_info': 'Self-Portrait in front of the Easel',
+        'img_info': 'Self-Portrait in front ofs the Easel',
         'dimens': '1888 (200 Kb); 65 x 50.5 cm',
         'url': url_for('static', filename=f'{sunflower_url}2.png')
         },
