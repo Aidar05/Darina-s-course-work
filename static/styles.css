@@ -251,3 +251,45 @@ body{
 button:hover{
   opacity: .6;
 }
+
+/* profile */
+.profile-main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+
+.personal-data-header{
+  margin: 0 0 10px 0
+}
+
+.table{
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  padding: 10px 20px 10px 20px;
+  border: solid 1px white 
+}
+
+.data-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.data-column span{
+  padding: 10px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.log-out-btn{
+  width: 100px;
+  height: 35px;
+  margin: 25px 0;
+}
