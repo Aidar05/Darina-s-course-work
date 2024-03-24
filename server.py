@@ -1,16 +1,11 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-from db_logic import *
+import multiprocessing
+from start_mysql import start_mysql 
 import mysql.connector
+from db_logic import *
 
 app = Flask(__name__)
 app.secret_key = 'eaa2cc52a16507cf194e4f0c'
-
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="gallery_data"
-)
 
 @app.route('/')
 def main_page():
@@ -174,4 +169,14 @@ def logout():
     return redirect(url_for('main_page'))
 
 if __name__ == '__main__':
+    p = multiprocessing.Process(target=start_mysql)
+    p.start()
+
+    db = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",
+        database="gallery_data"
+    )
+    
     app.run(host='0.0.0.0', port='43345', debug=True)
