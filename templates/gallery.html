@@ -14,12 +14,12 @@
 
   <body>
     <div class="header">
-      <a href="{{url_for('main_page')}}">LOGO</a>
+      <a href="{{url_for('main_page')}}" class="logo">LOGO</a>
       <div class="header-menu">
-          <a href="" class="menu-element">Ван Гок</a>
-          <a href="" class="menu-element">История Работ</a>
-          <a href="" class="menu-element">Критики</a>
-          <a href="{{url_for('gallery')}}" class="menu-element">Галерея</a>
+        <a href="{{url_for('van_gock')}}" class="menu-element">Ван Гок</a>
+        <a href="{{url_for('works')}}" class="menu-element">История Работ</a>
+        <a href="" class="menu-element">Критики</a>
+        <a href="{{url_for('gallery')}}" class="menu-element">Галерея</a>
       </div>
       
       {% if 'username' in session %}
@@ -37,7 +37,7 @@
     <div class="gallery-main-container"> 
       <h2 class="gallery-header">Автопортреты</h2>
       
-      <div class="gallery-section gallery-header-container">
+      <div class="gallery-section">
         <div class="work-img-container">
           <img 
             src="{{url_for('static', filename='gallery/header_img.png')}}"
@@ -60,11 +60,11 @@
             ясно передавая свое эмоциональное состояние и душевные переживания.
           </p>
 
-          <button class="work-text-button">К работам</button>
+          <a href="#gallery" class="work-text-button">К работам</a>
         </div>
       </div>
 
-      <div class="gallery-section block1">
+      <div class="gallery-section block1" id="gallery">
         {% for item in self_portraits %}
         <div class="work-img-container item">
           <img 
@@ -82,6 +82,7 @@
         {% endfor %}
       </div>
 
+      <h2 class="gallery-header">Серия подсолнухов</h2>
       <div class="gallery-section block2">
         {% for item in sunflowers %}
         <div class="work-img-container item">
@@ -98,18 +99,66 @@
         {% endfor %}
       </div>
 
-      <!-- <div class="img-list">
-        {% for img_url in img_urls %}
-          <a 
-            href="{{url_for('static', filename='gallery/'+img_url)}}" 
-            class="gallery-item">
+      <div class="gallery-section">
+        <div class="work-img-container">
+          <img 
+            src="{{url_for('static', filename='gallery/header_img2.png')}}"
+            alt="Resource not found"
+            class="work-img">
+    
+          <div class="credit-container">
+            <span class="img-info">Self-Portrait 1887</span>
+            <span class="img-info">Oil on artist's board, mounted on cradled panel</span>
+            <span class="img-info museum">41 × 32.5 cm (16 1/8 × 12 13/16 in.)</span>
+            <div class="line first-line"></div>
+            <div class="line second-line"></div>
+          </div>
+        </div>
+        
+        <div class="work-text-container">
+          <h1 class="work-text-header">Работы из Арля</h1>
 
-            <div class="gallery-item-hover">Посмотреть</div>
-            <img src="{{url_for('static', filename='gallery/'+img_url)}}"
-              alt="Resource not found">
-          </a>
-        {% endfor %} -->
+          <p class="work-text">
+            За свою творческую жизнь Ван Гог написал множество автопортретов. Для него это было одной
+            из форм самопознания и самовыражения. Он изображал себя в различные периоды жизни, всегда
+            ясно передавая свое эмоциональное состояние и душевные переживания.
+          </p>
+        </div>
       </div>
+
+      <div class="gallery-section">
+        {% for item in arl_works %}
+          <div class="work-img-container item">
+            <img 
+              src="{{item.url}}"
+              alt="Resource not found"
+              class="block2-img">
+      
+            <div class="credit-container">
+              <span class="img-info">{{item.img_info}}</span>
+              <span class="img-info museum">{{item.dimens}}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <h2 class="gallery-header">Авторские работы</h2>
+      <div class="gallery-section block2">
+        {% for item in author_copies %}
+        <div class="work-img-container">
+          <img 
+            src="{{item.url}}"
+            alt="Resource not found"
+            class="block2-img">
+    
+          <div class="credit-container">
+            <span class="img-info">{{item.img_info}}</span>
+            <span class="img-info museum">{{item.dimens}}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
     </div>
 
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"

@@ -18,10 +18,20 @@ def main_page():
     print(session)
     return render_template('index.html')
 
+@app.route('/van-gock')
+def van_gock():
+    return redirect(url_for('main_page', _anchor='Van-Gock-container'))
+
+@app.route('/works')
+def works():
+    return redirect(url_for('main_page', _anchor='works'))
+
 @app.route('/gallery', methods=["GET"])
 def gallery():
     portrait_url = 'gallery/self_portraits/self_portrait'
     sunflower_url = 'gallery/block2/sunflowers'
+    arl_work_url = 'gallery/arl_works/asdf'
+    author_copies_url = 'gallery/author_copies/asdf'
     self_portraits = [
         {
         'img_info': 'Self-Portrait in front of the Easel',
@@ -71,10 +81,47 @@ def gallery():
         'url': url_for('static', filename=f'{sunflower_url}4.png')
         },
     ]
+    arl_works = [
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{arl_work_url}.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{arl_work_url}2.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{arl_work_url}3.png')
+        },
+    ]
+    author_copies = [
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{author_copies_url}1.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{author_copies_url}2.png')
+        },
+        {
+        'img_info': 'Self-Portrait in front of the Easel',
+        'dimens': '1888 (200 Kb); 65 x 50.5 cm',
+        'url': url_for('static', filename=f'{author_copies_url}3.png')
+        },
+    ]
+    
     return render_template(
         'gallery.html',
         self_portraits=self_portraits,
-        sunflowers=sunflowers
+        sunflowers=sunflowers,
+        arl_works=arl_works,
+        author_copies=author_copies
     )
 
 @app.route('/profile', methods=["POST", "GET"])
