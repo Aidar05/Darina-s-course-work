@@ -15,6 +15,51 @@
   gap: 50px
 }
 
+.work-img-container{
+  position: relative;
+}
+
+#heart {
+  display: none;
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: 100px;
+  height: 90px;
+  transform: translate(-50%, -50%);
+}
+
+#heart:before, #heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: black;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.liked #heart:before, .liked #heart:after{
+  background: red;
+}
+
+#heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.work-img-container img:hover{
+  opacity: .5;
+}
+
+.work-img-container img:hover ~ #heart{
+  display: block;
+}
+
 .block1{
   background-color: #1F3B3F;
 }
@@ -64,3 +109,4 @@
 .work-text-header{
   text-align: center;
 }
+

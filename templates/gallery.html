@@ -38,12 +38,14 @@
       <h2 class="gallery-header">Автопортреты</h2>
       
       <div class="gallery-section">
-        <div class="work-img-container">
+        <div class="work-img-container liked">
           <img 
             src="{{url_for('static', filename='gallery/header_img.png')}}"
             alt="Resource not found"
             class="work-img">
-    
+          
+          <div id="heart"></div>
+
           <div class="credit-container">
             <span class="img-info">Self-Portrait 1887</span>
             <span class="img-info">Oil on artist's board, mounted on cradled panel</span>
@@ -160,21 +162,6 @@
       </div>
 
     </div>
-
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
-    <script>
-        $(".gallery-list").magnificPopup({
-            delegate: "a",
-            type: "image",
-            gallery: {
-                enabled: true
-            }
-        });
-    </script> -->
   </body>
 
 </html>
