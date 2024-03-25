@@ -26,6 +26,7 @@
   left: 50%;
   width: 100px;
   height: 90px;
+  opacity: .8;
   transform: translate(-50%, -50%);
 }
 
@@ -53,7 +54,7 @@
 }
 
 .work-img-container img:hover{
-  opacity: .5;
+  opacity: .3;
 }
 
 .work-img-container img:hover ~ #heart{

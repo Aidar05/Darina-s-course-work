@@ -74,6 +74,9 @@
             alt="Resource not found"
             class="work-img">
     
+          <div id="heart"></div>
+
+
           <div class="credit-container">
             <span class="img-info">{{item.img_info}}</span>
             <span class="img-info museum">{{item.dimens}}</span>
@@ -92,7 +95,9 @@
             src="{{item.url}}"
             alt="Resource not found"
             class="block2-img">
-    
+
+          <div id="heart"></div>
+            
           <div class="credit-container">
             <span class="img-info">{{item.img_info}}</span>
             <span class="img-info museum">{{item.dimens}}</span>
@@ -107,6 +112,8 @@
             src="{{url_for('static', filename='gallery/header_img2.png')}}"
             alt="Resource not found"
             class="work-img">
+    
+          <div id="heart"></div>
     
           <div class="credit-container">
             <span class="img-info">Self-Portrait 1887</span>
@@ -136,6 +143,8 @@
               alt="Resource not found"
               class="block2-img">
       
+            <div id="heart"></div>
+
             <div class="credit-container">
               <span class="img-info">{{item.img_info}}</span>
               <span class="img-info museum">{{item.dimens}}</span>
@@ -153,6 +162,8 @@
             alt="Resource not found"
             class="block2-img">
     
+          <div id="heart"></div>
+
           <div class="credit-container">
             <span class="img-info">{{item.img_info}}</span>
             <span class="img-info museum">{{item.dimens}}</span>
@@ -164,4 +175,20 @@
     </div>
   </body>
 
+  <script>
+    let items = document.getElementsByClassName('work-img-container')
+    console.log(items)
+
+    for (i of items){
+      i.addEventListener('click', like_unlike)
+    }
+
+    function like_unlike(){
+      if (this.classList.value.includes('liked')){
+        this.classList.remove('liked')
+      } else{
+        this.classList.add('liked')
+      }
+    }
+  </script>
 </html>
