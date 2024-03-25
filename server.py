@@ -15,13 +15,17 @@ def main_page():
 
 @app.route('/gallery', methods=["GET"])
 def gallery():
-    return render_template(
-        'gallery.html',
-        self_portraits=self_portraits,
-        sunflowers=sunflowers,
-        arl_works=arl_works,
-        author_copies=author_copies
-    )
+    template_data = {
+        'self_portraits': self_portraits,
+        'sunflowers': sunflowers,
+        'arl_works': arl_works,
+        'author_copies': author_copies
+    }
+    
+    if 'username' in session:
+        template_data['username'] = session['username']
+    
+    return render_template('gallery.html', **template_data)
 
 @app.route('/like_dislike', methods=['POST'])
 def like_dislike():

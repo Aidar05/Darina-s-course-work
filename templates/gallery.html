@@ -174,15 +174,25 @@
   <script>
     let items = document.getElementsByClassName('work-img-container')
     let url = 'http://127.0.0.1:43345/like_dislike';
+    let username = '{{username}}'
+    let logged_in
 
-    
+    if (username.length == 0){
+      logged_in = false
+    } else{
+      logged_in = true
+    }
+
     for (i of items){
       i.addEventListener('click', like_unlike)
     }
     
     function like_unlike(){
       const link = this.children[0].src
-      send_to_server(link)
+
+      if (logged_in){
+        send_to_server(link)
+      } 
       
       if (this.classList.value.includes('liked')){
         this.classList.remove('liked')
