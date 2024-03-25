@@ -8,10 +8,10 @@ from data import *
 app = Flask(__name__)
 app.secret_key = 'eaa2cc52a16507cf194e4f0c'
 
-
-@app.route('/works')
-def works():
-    return redirect(url_for('main_page', _anchor='works'))
+@app.route('/')
+def main_page():
+    print(session)
+    return render_template('index.html')
 
 @app.route('/gallery', methods=["GET"])
 def gallery():
@@ -23,10 +23,14 @@ def gallery():
         author_copies=author_copies
     )
 
-@app.route('/')
-def main_page():
-    print(session)
-    return render_template('index.html')
+@app.route('/like_dislike', methods=['POST'])
+def like_dislike():
+    print(request.data.decode('utf-8'))
+    return 'liked'
+
+@app.route('/works')
+def works():
+    return redirect(url_for('main_page', _anchor='works'))
 
 @app.route('/van-gock')
 def van_gock():

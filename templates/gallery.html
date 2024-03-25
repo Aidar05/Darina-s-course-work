@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Галерея</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
 
     <link rel="stylesheet" href="{{url_for('static', filename='gallery.css')}}">
   </head>
@@ -36,7 +34,7 @@
       <h2 class="gallery-header">Автопортреты</h2>
       
       <div class="gallery-section">
-        <div class="work-img-container liked">
+        <div class="work-img-container">
           <img 
             src="{{url_for('static', filename='gallery/header_img.png')}}"
             alt="Resource not found"
@@ -175,18 +173,34 @@
 
   <script>
     let items = document.getElementsByClassName('work-img-container')
-    console.log(items)
+    let url = 'http://127.0.0.1:43345/like_dislike';
 
+    
     for (i of items){
       i.addEventListener('click', like_unlike)
     }
-
+    
     function like_unlike(){
+      const link = this.children[0].src
+      send_to_server(link)
+      
       if (this.classList.value.includes('liked')){
         this.classList.remove('liked')
       } else{
         this.classList.add('liked')
       }
+    }
+
+    function send_to_server(data){
+      fetch(url, {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), 
+      })
+      .then(data => console.log('Success:', data))
+      .catch((error) => console.error('Error:', error));
     }
   </script>
 </html>
