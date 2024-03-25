@@ -12,7 +12,7 @@
 
     <link 
       rel="icon"
-      href="{{ url_for('static', filename='favicon.ico') }}"
+      href="{{url_for('static', filename='favicon.ico')}}"
       type="image/x-icon">
   </head>
 
@@ -45,5 +45,12 @@
         <button onclick="location.href='/log-out'" class="ghost-btn log-out-btn">Выйти</button> 
       </div>
     </div>
+    
+    <!-- <div class="profile-main-container">  
+      {% for i in liked %}
+        {{i}}
+        <img src="{{url_for('static', filename=i)}}" alt="">
+      {% endfor %}
+    </div> -->
   </body>
 </html>

@@ -64,6 +64,12 @@ def get_user_id(db, username):
     user_id = cursor.fetchone()
     return user_id[0]
 
+def get_liked_urls(db, user_id):
+    cursor = db.cursor()
+    cursor.execute('select liked from user_data where id = %s', (user_id, ))
+    liked = cursor.fetchall()
+    return liked[0]
+
 def delete_user_data(db):
     cursor = db.cursor()
     cursor.execute("truncate table user_data")

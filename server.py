@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import multiprocessing
-from start_mysql import start_mysql 
 import mysql.connector
+from start_mysql import start_mysql 
 from db_logic import *
 from data import *
+from modify_urls import *
 
 app = Flask(__name__)
 app.secret_key = 'eaa2cc52a16507cf194e4f0c'
@@ -34,10 +35,6 @@ def like_dislike():
     username = session['username']
     user_id = get_user_id(db, username)
     
-    # Принтить данные все о юзере в консоль
-    print(get_user_data(db, get_user_id(db, username)))
-
-    print(img_url, username, user_id)
     save_to_liked(db, img_url, user_id)
     return 'saved'
 
@@ -50,12 +47,19 @@ def van_gock():
     return redirect(url_for('main_page', _anchor='Van-Gock-container'))
 
 @app.route('/profile', methods=["POST", "GET"])
-def get_profile_info():     
+def get_profile_info():
+    user_id= get_user_id(db, session['username'])
+    # liked = get_liked_urls(db, user_id)[0].split()
+    print(liked)
+    # liked = filter_liked(liked)
+    print(liked)
+
     return render_template(
         'profile.html',
         username = session['username'],
         email = session['email'],
         password = session['password'],
+        # liked = liked
     )
 
 @app.route('/sign-up', methods=['POST', 'GET'])
@@ -97,7 +101,7 @@ def login():
 @app.route('/log-out')
 def logout():
     session.clear()
-    return redirect(url_for('main_page'))
+    return redirect(url_for('main_page'))    
 
 if __name__ == '__main__':
     p = multiprocessing.Process(target=start_mysql)
