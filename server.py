@@ -8,9 +8,10 @@ from data import *
 app = Flask(__name__)
 app.secret_key = 'eaa2cc52a16507cf194e4f0c'
 
+
 @app.route('/')
 def main_page():
-    print(session)
+    create_table(db)
     return render_template('index.html')
 
 @app.route('/gallery', methods=["GET"])
@@ -29,8 +30,16 @@ def gallery():
 
 @app.route('/like_dislike', methods=['POST'])
 def like_dislike():
-    print(request.data.decode('utf-8'))
-    return 'liked'
+    img_url = request.data.decode('utf-8')
+    username = session['username']
+    user_id = get_user_id(db, username)
+    
+    # Принтить данные все о юзере в консоль
+    print(get_user_data(db, get_user_id(db, username)))
+
+    print(img_url, username, user_id)
+    save_to_liked(db, img_url, user_id)
+    return 'saved'
 
 @app.route('/works')
 def works():
