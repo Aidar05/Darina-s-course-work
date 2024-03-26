@@ -5,6 +5,7 @@ from start_mysql import start_mysql
 from db_logic import *
 from data import *
 from modify_urls import *
+from send_email import *
 
 app = Flask(__name__)
 app.secret_key = 'eaa2cc52a16507cf194e4f0c'
@@ -33,7 +34,7 @@ def gallery():
 def like_dislike():
     img_url = request.data.decode('utf-8')
     username = session['username']
-    user_id = get_user_id(db, username)
+    user_id = get_user_id(db, 'username', username)
     
     save_to_liked(db, img_url, user_id)
     return 'saved'
@@ -48,12 +49,6 @@ def van_gock():
 
 @app.route('/profile', methods=["POST", "GET"])
 def get_profile_info():
-    user_id= get_user_id(db, session['username'])
-    # liked = get_liked_urls(db, user_id)[0].split()
-    print(liked)
-    # liked = filter_liked(liked)
-    print(liked)
-
     return render_template(
         'profile.html',
         username = session['username'],
@@ -97,6 +92,32 @@ def login():
             return redirect(url_for("main_page"))
         else: 
             return render_template("sign-in.html")
+
+@app.route('/recovery', methods=['POST', 'GET'])
+def password_recovery():
+    if request.method == "GET":
+        return render_template('password_recovery.html')
+    elif request.method == "POST":
+        email = request.form["email"] 
+        token = generate_token(email)
+        send_email(email, token)
+        return redirect(url_for('login'))
+    
+@app.route('/change_password', methods={"POST", "GET"})
+def change_password():
+    if request.method == 'GET':
+        return render_template('change_password.html')
+    elif request.method == "POST":
+        email = request.form["email"]
+        new_password = request.form['new_password']
+        confirm_password = request.form['confirm_password']
+
+        if new_password == confirm_password:
+            user_id = get_user_id(db, column_name='email', value=email)
+            change_user_password(db, user_id, new_password)
+
+            return redirect(url_for('login'))
+        return render_template('change_password.html')
 
 @app.route('/log-out')
 def logout():

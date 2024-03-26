@@ -58,17 +58,31 @@ def get_user_data(db, user_id):
     user_data = cursor.fetchone()
     return user_data
 
-def get_user_id(db, username):
+def get_user_id(db, column_name, value):
     cursor = db.cursor()
-    cursor.execute("select id from user_data where username = %s", (username, ))
-    user_id = cursor.fetchone()
-    return user_id[0]
+
+    if column_name == 'username':
+        cursor.execute("SELECT id FROM user_data WHERE username = %s", (value,))
+    elif column_name == 'email':
+        cursor.execute("SELECT id FROM user_data WHERE email = %s", (value,))
+    else:
+        print("Invalid login type. Use 'username' or 'email'.")
+        return None
+        
+    user = cursor.fetchone()
+    return user[0] if user else None
 
 def get_liked_urls(db, user_id):
     cursor = db.cursor()
     cursor.execute('select liked from user_data where id = %s', (user_id, ))
     liked = cursor.fetchall()
     return liked[0]
+
+def change_user_password(db, user_id, new_password):
+    cursor = db.cursor()
+    cmd = '''update user_data set password = %s where id = %s'''
+    cursor.execute(cmd, (new_password, user_id))
+    db.commit()
 
 def delete_user_data(db):
     cursor = db.cursor()
