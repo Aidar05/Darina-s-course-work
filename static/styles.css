@@ -136,6 +136,27 @@ body{
 
 .cyan{
   background-color: #5F8C7F;
+  justify-content: flex-start;
+  gap: 50px
+}
+
+.cyan .work-text-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.cyan h1{
+  color: #D9AC55
+}
+
+#redirect_sunflowers{
+  width: 300px;
+  height: 70px;
+  font-size: 24px;
+  background-color: #B2C0AF;
+  color: #132528;
+  border: solid 6px #D6AA38;
+  align-self: flex-end;
 }
 
 .darkGreen{
@@ -144,10 +165,11 @@ body{
 
 .work-img-container{
   position: relative;
-  bottom: 60px;
+  bottom: 70px;
 }
 
 .work-img{
+  height: 460px;
   width: 380px;
   aspect-ratio: 76 / 100;
   padding-bottom: 15px;
@@ -159,11 +181,14 @@ body{
 }
 
 .work-header{
+  font-size: 32px;
+  margin: 35px 0;
   text-align: center;
 }
 
 .work-text{
-  width: 750px;
+  width: 800px;
+  line-height: 36px;
   font-size: 24px;
   line-height: 36px;
 }
