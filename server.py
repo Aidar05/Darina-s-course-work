@@ -43,6 +43,10 @@ def like_dislike():
 def works():
     return redirect(url_for('main_page', _anchor='works'))
 
+@app.route('/sunflowers')
+def sunflowers_section():
+    return redirect(url_for('gallery', _anchor='sunflowers-series'))
+
 @app.route('/van-gock')
 def van_gock():
     return redirect(url_for('main_page', _anchor='Van-Gock-container'))

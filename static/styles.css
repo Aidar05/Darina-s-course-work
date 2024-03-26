@@ -156,6 +156,7 @@ body{
   background-color: #B2C0AF;
   color: #132528;
   border: solid 6px #D6AA38;
+  text-align: center;
   align-self: flex-end;
 }
 
