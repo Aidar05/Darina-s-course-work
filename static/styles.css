@@ -157,7 +157,11 @@ body{
   color: #132528;
   border: solid 6px #D6AA38;
   text-align: center;
+}
+
+#redirect-sunflowers-container{
   align-self: flex-end;
+
 }
 
 .darkGreen{
