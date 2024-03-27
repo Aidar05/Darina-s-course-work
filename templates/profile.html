@@ -46,11 +46,12 @@
       </div>
     </div>
     
-    <!-- <div class="profile-main-container">  
-      {% for i in liked %}
-        {{i}}
-        <img src="{{url_for('static', filename=i)}}" alt="">
+    <div class="profile-main-container">
+      {% for i in liked_urls %}
+        <span>
+        </span>
+        <img src="{{ url_for('static', filename=i) }}" alt="">
       {% endfor %}
-    </div> -->
+    </div>
   </body>
 </html>

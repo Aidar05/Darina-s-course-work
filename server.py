@@ -53,12 +53,18 @@ def van_gock():
 
 @app.route('/profile', methods=["POST", "GET"])
 def get_profile_info():
+    username = session['username']
+    user_id = get_user_id(db, 'username', username)
+    
+    liked_urls_db = get_liked_urls(db, user_id)
+    liked_urls = filter_liked(liked_urls_db)
+
     return render_template(
         'profile.html',
         username = session['username'],
         email = session['email'],
         password = session['password'],
-        # liked = liked
+        liked_urls = liked_urls
     )
 
 @app.route('/sign-up', methods=['POST', 'GET'])
