@@ -14,7 +14,9 @@
 
   <body>
     <div class="header">
-      <a href="{{url_for('main_page')}}" class="logo">LOGO</a>
+      <a href="{{url_for('main_page')}}" class="logo">
+        <img src="{{url_for('static', filename='logo.png')}}" alt="Resource not found" class="logo">
+      </a>
       <div class="header-menu">
           <a href="#Van-Gock-container" class="menu-element">Ван Гог</a>
           <a href="#works" class="menu-element">История Работ</a>

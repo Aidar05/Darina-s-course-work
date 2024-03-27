@@ -42,7 +42,8 @@ body{
 }
 
 .logo{
-  font-size: 30px;
+  width: 45px;
+  aspect-ratio: 1 / 1;
 }
 
 .menu-element{
