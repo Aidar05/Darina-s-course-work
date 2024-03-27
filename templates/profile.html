@@ -46,12 +46,20 @@
       </div>
     </div>
     
-    <div class="profile-main-container">
-      {% for i in liked_urls %}
-        <span>
-        </span>
-        <img src="{{ url_for('static', filename=i) }}" alt="">
-      {% endfor %}
+
+    
+    <div class="profile-main-container favorites-container">  
+      <h1 class="personal-cabinet">Любимые</h1>
+      
+      <form method="post" action="/profile">
+        <button type="submit" class="ghost-btn log-out-btn">Очистить</button>
+      </form>
+
+      <div class="favorites-img-container">
+        {% for i in liked_urls %}
+          <img src="{{ url_for('static', filename=i) }}" alt="Resource not found">
+        {% endfor %}
+      </div>
     </div>
   </body>
 </html>

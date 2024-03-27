@@ -295,6 +295,15 @@ button:hover{
   align-items: center
 }
 
+.favorites-img-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.favorites-img-container img{
+  max-width: 385px;
+}
 
 .personal-data-header{
   margin: 0 0 10px 0
